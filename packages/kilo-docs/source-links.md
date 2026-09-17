@@ -9,6 +9,10 @@
   <!-- packages/opencode/src/provider/models.ts -->
 - <https://api.digitalocean.com>
   <!-- packages/opencode/src/plugin/digitalocean.ts -->
+- <https://api.intelligence.io.solutions/api/v1>
+  <!-- packages/opencode/src/kilocode/provider/ionet.ts -->
+- <https://api.intelligence.io.solutions/api/v1/models>
+  <!-- packages/opencode/src/kilocode/provider/ionet.ts -->
 - <https://api.kilo.ai>
   <!-- packages/opencode/src/cli/cmd/github.handler.ts -->
 - <https://api.x.ai/v1>

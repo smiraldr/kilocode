@@ -1,0 +1,172 @@
+// IO Intelligence (io.net) is not listed on models.dev, so its static catalog is
+// injected here. The endpoint is OpenAI-compatible and serves an `org/name`
+// model catalog; entries below are a snapshot of the live
+// GET https://api.intelligence.io.solutions/api/v1/models response taken on
+// 2026-09-17. Models that do not report a max output token limit in that
+// response get a conservative 32k output budget here. The full, current model
+// list is always available from the endpoint itself.
+import type { Provider } from "@opencode-ai/core/models-dev"
+
+export const PROVIDER_ID = "ionet"
+
+export const DEFAULT_MODEL_ID = "deepseek-ai/DeepSeek-V4.1-Flash"
+
+export const CatalogProvider = {
+  id: PROVIDER_ID,
+  name: "IO Intelligence",
+  description: "Open-weight models (DeepSeek, GLM, Kimi, Qwen, Llama and more) from io.net's IO Intelligence API.",
+  env: ["IONET_API_KEY"],
+  api: "https://api.intelligence.io.solutions/api/v1",
+  npm: "@ai-sdk/openai-compatible",
+  models: {
+    [DEFAULT_MODEL_ID]: {
+      id: DEFAULT_MODEL_ID,
+      name: "DeepSeek V4.1 Flash",
+      family: "deepseek",
+      release_date: "",
+      attachment: false,
+      reasoning: true,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 0.309, output: 1.236, cache_read: 0.1545 },
+      limit: { context: 262124, output: 131072 },
+      modalities: { input: ["text"], output: ["text"] },
+    },
+    "deepseek-ai/DeepSeek-V4-Pro": {
+      id: "deepseek-ai/DeepSeek-V4-Pro",
+      name: "DeepSeek V4 Pro",
+      family: "deepseek",
+      release_date: "",
+      attachment: false,
+      reasoning: true,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 1.702, output: 3.404, cache_read: 0.851 },
+      limit: { context: 1048576, output: 600000 },
+      modalities: { input: ["text"], output: ["text"] },
+    },
+    "deepseek-ai/DeepSeek-R1-0528": {
+      id: "deepseek-ai/DeepSeek-R1-0528",
+      name: "DeepSeek R1 0528",
+      family: "deepseek",
+      release_date: "",
+      attachment: false,
+      reasoning: true,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 0.568, output: 2.279, cache_read: 0.284 },
+      limit: { context: 128000, output: 32768 },
+      modalities: { input: ["text"], output: ["text"] },
+    },
+    "zai-org/GLM-5.3": {
+      id: "zai-org/GLM-5.3",
+      name: "GLM 5.3",
+      family: "glm",
+      release_date: "",
+      attachment: false,
+      reasoning: true,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 1.66, output: 5.28, cache_read: 0.83 },
+      limit: { context: 262144, output: 131072 },
+      modalities: { input: ["text"], output: ["text"] },
+    },
+    "zai-org/GLM-5.3-Flash": {
+      id: "zai-org/GLM-5.3-Flash",
+      name: "GLM 5.3 Flash",
+      family: "glm",
+      release_date: "",
+      attachment: true,
+      reasoning: true,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 0.21, output: 0.7, cache_read: 0.105 },
+      limit: { context: 262144, output: 131072 },
+      modalities: { input: ["text", "image"], output: ["text"] },
+    },
+    "moonshotai/Kimi-K3": {
+      id: "moonshotai/Kimi-K3",
+      name: "Kimi K3",
+      family: "kimi",
+      release_date: "",
+      attachment: true,
+      reasoning: true,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 3.05, output: 15.35, cache_read: 1.525 },
+      limit: { context: 1048576, output: 32768 },
+      modalities: { input: ["text", "image"], output: ["text"] },
+    },
+    "moonshotai/Kimi-K2.7-Code": {
+      id: "moonshotai/Kimi-K2.7-Code",
+      name: "Kimi K2.7 Code",
+      family: "kimi",
+      release_date: "",
+      attachment: true,
+      reasoning: true,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 1.072, output: 4.65, cache_read: 0.536 },
+      limit: { context: 262144, output: 32768 },
+      modalities: { input: ["text", "image"], output: ["text"] },
+    },
+    "Qwen/Qwen3.8-27B": {
+      id: "Qwen/Qwen3.8-27B",
+      name: "Qwen3.8 27B",
+      family: "qwen",
+      release_date: "",
+      attachment: true,
+      reasoning: true,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 0.3458, output: 2.615, cache_read: 0.1729 },
+      limit: { context: 65536, output: 65536 },
+      modalities: { input: ["text", "image"], output: ["text"] },
+    },
+    "Qwen/Qwen3-Next-80B-A3B-Instruct": {
+      id: "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      name: "Qwen3 Next 80B A3B",
+      family: "qwen",
+      release_date: "",
+      attachment: false,
+      reasoning: false,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 0.118, output: 1.136, cache_read: 0.059 },
+      limit: { context: 262144, output: 32768 },
+      modalities: { input: ["text"], output: ["text"] },
+    },
+    "openai/gpt-oss-120b": {
+      id: "openai/gpt-oss-120b",
+      name: "GPT-OSS 120B",
+      family: "gpt-oss",
+      release_date: "",
+      attachment: false,
+      reasoning: true,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 0.178, output: 0.68, cache_read: 0.089 },
+      limit: { context: 131072, output: 32768 },
+      modalities: { input: ["text"], output: ["text"] },
+    },
+    "meta-llama/Llama-3.3-70B-Instruct": {
+      id: "meta-llama/Llama-3.3-70B-Instruct",
+      name: "Llama 3.3 70B Instruct",
+      family: "llama",
+      release_date: "",
+      attachment: false,
+      reasoning: false,
+      temperature: true,
+      tool_call: true,
+      cost: { input: 0.607, output: 1.039, cache_read: 0.303 },
+      limit: { context: 128000, output: 32768 },
+      modalities: { input: ["text"], output: ["text"] },
+    },
+  },
+} satisfies Provider
+
+/** Adds the IO Intelligence catalog unless the snapshot already carries one. */
+export function overlay(providers: Record<string, Provider>): Record<string, Provider> {
+  if (providers[PROVIDER_ID]) return providers
+  return { ...providers, [PROVIDER_ID]: CatalogProvider }
+}
