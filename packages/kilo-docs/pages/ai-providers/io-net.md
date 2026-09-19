@@ -68,7 +68,7 @@ Catalog entries, pricing, and context limits can lag the endpoint or reference m
 
 ## Troubleshooting
 
-- **IO.NET is not listed:** the provider only appears once your API key is available. Verify `IOINTELLIGENCE_API_KEY` is set in the same environment that launches Kilo, or that the key was saved from the VS Code settings.
+- **IO.NET is not listed:** model lists and the CLI show the provider only once your API key is available. Verify `IOINTELLIGENCE_API_KEY` is set in the same environment that launches Kilo, or that the key was saved from the VS Code settings. (The VS Code Providers tab lists the full catalog before a key is set.)
 - **Invalid API key:** requests fail with a 401 error. Re-create the key in the io.net console and update the environment variable or provider settings.
-- **Unknown model:** model IDs must match the live catalog exactly (`org/name`). Check the ID against the `/models` endpoint, then retry.
+- **Unknown model:** model IDs must match the live catalog exactly (`org/name`). Check the ID against the `/models` endpoint, then retry. If the ID is served by the endpoint but missing from Kilo's catalog, declare it under `provider.io-net.models` first (see [Choosing Models](#choosing-models)).
 - **Rate limits:** IO Intelligence applies per-tier rate limits; if requests fail with 429, check your tier in the io.net console and retry after the window resets.
