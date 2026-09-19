@@ -44,26 +44,26 @@ Then set your default model in your `kilo.json` config file (`~/.config/kilo/kil
 {% /tab %}
 {% tab label="VS Code" %}
 
-Open **Settings** (gear icon) and go to the **Providers** tab to add **IO.NET** and enter your API key. The extension stores this in your `kilo.json` config file; the **CLI** tab shows the equivalent environment-variable setup.
+Open **Settings** (gear icon) and go to the **Providers** tab to add **IO.NET** and enter your API key. The extension stores the key in Kilo's auth store (`~/.local/share/kilo/auth.json`), not `kilo.json`; the **CLI** tab shows the equivalent environment-variable setup.
 
 {% /tab %}
 {% /tabs %}
 
 ## Choosing Models
 
-Model IDs are `org/name` pairs, for example `deepseek-ai/DeepSeek-R1-0528`. The provider's model list comes from Kilo's provider catalog, and any ID served by the endpoint can be used directly as a custom model string (`io-net/<org>/<name>`).
+Model IDs are `org/name` pairs, for example `deepseek-ai/DeepSeek-R1-0528`. The provider's model list comes from Kilo's provider catalog, which lists a subset of the models the endpoint serves; model IDs that are not in the catalog must be declared as custom models under `provider.io-net.models` in `kilo.json` before they can be used as `io-net/<org>/<name>` strings.
 
 The endpoint always serves the current catalog with live pricing at `https://api.intelligence.io.solutions/api/v1/models`.
 
 {% callout type="note" %}
-Catalog pricing and context limits can lag the endpoint. IO Intelligence updates model pricing regularly; check the `/models` endpoint for current per-token prices before budgeting.
+Catalog pricing and context limits can lag the endpoint; check the `/models` endpoint for current per-token prices before budgeting.
 {% /callout %}
 
 ## Tips and Notes
 
 - **Model IDs are `org/name`:** always use the full ID (for example `deepseek-ai/DeepSeek-R1-0528`), not just the model name.
 - **Prompt caching:** cached prompt reads are billed at a reduced rate.
-- **Chat Completions only:** IO Intelligence serves the OpenAI Chat Completions API. Responses, embeddings and audio endpoints are not available.
+- **Chat Completions only:** IO Intelligence serves the OpenAI Chat Completions API, and Kilo Code uses its chat completions and models endpoints. The Responses API is not available (the endpoint returns 404 for `/v1/responses`).
 - **Base URL:** `https://api.intelligence.io.solutions/api/v1` (fixed).
 
 ## Troubleshooting
